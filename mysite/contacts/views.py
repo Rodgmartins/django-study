@@ -1,10 +1,16 @@
+from django.contrib.auth.decorators import permission_required
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.urls import reverse
 
-from .forms import NameForm, ContactForm
+from .forms import ContactForm, NameForm
 
+
+@permission_required("contacts.add_contact")
 def create(request):
+    if not request.user.is_authenticated:
+        return redirect(f"{settings.LOGIN_URL}?next={request.path}")
+    
     if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
