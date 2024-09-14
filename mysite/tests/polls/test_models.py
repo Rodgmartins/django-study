@@ -7,7 +7,7 @@ from polls.models import Question
 def test_question_was_published_recently():
     #GIVEN:
     question_text = "Teste_string?"
-    pub_date = timezone.now() - timezone.timedelta(days=1)
+    pub_date = timezone.now()
     active = True
     #THEN:
     question = Question.objects.create(question_text=question_text, pub_date=pub_date, active=active)
