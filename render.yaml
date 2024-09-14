@@ -1,8 +1,8 @@
 databases:
-  - name: mysitedb
-    plan: free
-    databaseName: mysite
-    user: mysite
+- name: mysitedb
+  databaseName: mysite_pi7v
+  user: mysite
+  plan: free
 
 services:
   - type: web
